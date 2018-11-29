@@ -6,5 +6,8 @@
 # Logs
 *.log
 
+# Files
+token
+
 # Test results
 */results
