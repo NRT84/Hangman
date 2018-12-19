@@ -3,10 +3,13 @@
 */__pycache__
 */.pytest_cache
 
+# Virtual Environment
+*/venv
+
 # Logs
 *.log
 
-# Files
+# Specific Files
 token
 
 # Test results
