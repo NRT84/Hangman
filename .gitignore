@@ -4,7 +4,7 @@
 */.pytest_cache
 
 # Virtual Environment
-*/venv
+venv/*
 
 # Logs
 *.log
