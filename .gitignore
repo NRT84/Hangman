@@ -1,7 +1,7 @@
 # Pycharm
 *.idea
-*/__pycache__
-*/.pytest_cache
+__pycache__/*
+.pytest_cache/*
 
 # Virtual Environment
 venv/*
@@ -13,4 +13,4 @@ venv/*
 token
 
 # Test results
-*/results
+results/*
