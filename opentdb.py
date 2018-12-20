@@ -14,11 +14,9 @@ class Opentdb:
             self.token = self.__generate_new_token()
             self.__update_token_file(self.__token_file, self.token)
 
-
     def __get_token(self, token_file):
         with open(token_file) as file:
             return file.read()
-
 
     def __is_token_valid(self, token):
         response = requests.get("https://opentdb.com/api.php?amount=1&token={0}".format(token))
@@ -26,13 +24,11 @@ class Opentdb:
             return False
         return True
 
-
     def __generate_new_token(self):
         req = requests.get("https://opentdb.com/api_token.php?command=request")
         content = req.text
         json_data = dict(json.loads(content))
         return json_data.get("token")
-
 
     def __update_token_file(self, file, token):
         with open(file, "r+") as my_file:
@@ -41,7 +37,6 @@ class Opentdb:
             my_file.write(token)
             my_file.truncate()
             my_file.close()
-
 
     def get_question(self, category, difficulty):
         #category - 9, difficulty, easy, medium, hard
