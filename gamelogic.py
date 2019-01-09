@@ -29,7 +29,7 @@ class GameLogic:
 
     def handle_positive_guess(self, guess):
         self.should_not_reduce_retry = True
-        for letter in self.config.answer.lower():
+        for letter in self.config.answer:
             if letter == guess:
                 self.config.candidate = self.evaluate_new_candidate(self.config.candidate, letter, self.config.answer)
 
@@ -46,7 +46,8 @@ class GameLogic:
             return
         self.config.retries -= 1
         if self.config.retries == 0:
-            print("\n\nLOL! you suck at this game! maybe try another one?\n\n")
+            print("\n\nThe correct answer was: {}".format(self.config.answer))
+            print("LOL! you suck at this game! maybe try another one? ;)\n\n")
             return
         self.print_info()
 

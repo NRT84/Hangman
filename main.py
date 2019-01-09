@@ -6,7 +6,8 @@ import gamelogic
 def main():
     option = 0
     while option not in range(1, 3):
-        print("Welcome to Hangman! What you wanna do?")
+        print("Welcome to Hangman!")
+        print("For simplicity reasons all your guesses should be lowercase as the answers will be as well.")
         try:
             option = int(input("Select a valid option (input number):\n1. Start a new game.\n2. Exit.\n\nYour choice: "))
             if option not in range(1, 3):

@@ -1,4 +1,4 @@
 class GameData:
 
-    retries = {1: 3, 2: 5, 3: 8}
-    words = {1: ["lol", "lel"], 2: ["trolol", "trelel"], 3: ["wtf yo", "this is hard son"]}
+    retries = {1: 5, 2: 7, 3: 10}
+    difficulty = {1: "easy", 2: "medium", 3: "hard"}
