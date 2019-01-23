@@ -9,7 +9,7 @@ def main():
         print("Welcome to Hangman!")
         print("For simplicity reasons all your guesses should be lowercase as the answers will be as well.")
         try:
-            option = int(input("Select a valid option (input number):\n1. Start a new game.\n2. Exit.\n\nYour choice: "))
+            option = int(input("Select a valid option (input number):\n1. Start a new game\n2. Exit\n\nYour choice: "))
             if option not in range(1, 3):
                 raise ValueError
         except ValueError:

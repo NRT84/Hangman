@@ -1,3 +1,6 @@
+from colorama import Fore
+
+
 class GameLogic:
 
     def __init__(self, config):
@@ -46,7 +49,8 @@ class GameLogic:
             return
         self.config.retries -= 1
         if self.config.retries == 0:
-            print("\n\nThe correct answer was: {}".format(self.config.answer))
+            print("\n\nThe correct answer was: {}".format(Fore.LIGHTGREEN_EX + self.config.answer))
+            print(Fore.RESET)
             print("LOL! you suck at this game! maybe try another one? ;)\n\n")
             return
         self.print_info()
