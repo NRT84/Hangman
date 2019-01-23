@@ -21,7 +21,8 @@ def main():
             logic = gamelogic.GameLogic(config)
             logic.pretty_print(config.candidate)
             while not config.is_guessed and config.retries > 0:
-                logic.guess(input("Enter your guess: \n"))
+                logic.guess(input("Enter your guess: "))
+                print("\n")
             option = 0
         if option == 2:
             print("Thanks for playing!")

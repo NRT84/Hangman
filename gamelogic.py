@@ -1,9 +1,11 @@
 from colorama import Fore
+import graphics as graph
 
 
 class GameLogic:
 
     def __init__(self, config):
+        self.graphics = graph.Graphics()
         self.config = config
         self.should_not_reduce_retry = None
 
@@ -38,20 +40,23 @@ class GameLogic:
 
     def handle_end_turn(self, guess):
         self.mark_used_word(guess)
-        self.reduce_retries()
+        self.reduce_retries(guess)
 
     def mark_used_word(self, guess):
         self.config.used_words.append(guess)
 
-    def reduce_retries(self):
+    def reduce_retries(self, guess):
         if self.should_not_reduce_retry or self.config.is_guessed:
             self.print_info()
             return
-        self.config.retries -= 1
+        else:
+            self.config.retries -= 1
+            print("'{0}' isn't found in the answer\n".format(guess))
+            self.graphics.print_next()
         if self.config.retries == 0:
-            print("\n\nThe correct answer was: {}".format(Fore.LIGHTGREEN_EX + self.config.answer))
+            print("The correct answer was: {}".format(Fore.LIGHTGREEN_EX + self.config.answer))
             print(Fore.RESET)
-            print("LOL! you suck at this game! maybe try another one? ;)\n\n")
+            print("Try another one? ;)\n")
             return
         self.print_info()
 

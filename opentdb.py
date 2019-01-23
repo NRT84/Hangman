@@ -5,6 +5,7 @@ import json
 import base64
 
 
+# Based on https://opentdb.com/
 class Opentdb:
 
     def __init__(self):
@@ -37,7 +38,6 @@ class Opentdb:
             my_file.truncate()
 
     def get_trivia_item(self, category, difficulty):
-        #category - 9, difficulty, easy, medium, hard
         query = trivia_item.TriviaItem()
         req = requests.get('https://opentdb.com/api.php?amount=1&category={0}&difficulty={1}&encode=base64&type=multiple&token={2}'.format(category, difficulty, self.token))
         content = req.text
