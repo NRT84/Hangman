@@ -1,5 +1,4 @@
 import opentdb
-import categories
 
 
 class Configuration:
@@ -27,16 +26,17 @@ class Configuration:
     def init_category(self):
         self.category = int(input("Select category (input number):\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}\n"
                                   "{10}\n{11}\n{12}\n{13}\n""{14}\n{15}\n{16}\n{17}\n{18}\n\nYour choice: "
-                                  .format(categories.general_knowledge, categories.entertainment_books,
-                                          categories.entertainment_film, categories.entertainment_music,
-                                          categories.entertainment_musicals_and_theatres,
-                                          categories.entertainment_television, categories.entertainment_video_games,
-                                          categories.entertainment_board_games, categories.science_and_nature,
-                                          categories.science_computers, categories.science_mathematics,
-                                          categories.mythology, categories.sports, categories.geography,
-                                          categories.history, categories.politics, categories.art,
-                                          categories.celebrities, categories.animals)))
-        if self.category not in range(1, 19):
+                                  .format(self.game_data.categories[1].description, self.game_data.categories[2].description,
+                                          self.game_data.categories[3].description, self.game_data.categories[4].description,
+                                          self.game_data.categories[5].description, self.game_data.categories[6].description,
+                                          self.game_data.categories[7].description, self.game_data.categories[8].description,
+                                          self.game_data.categories[9].description, self.game_data.categories[10].description,
+                                          self.game_data.categories[11].description, self.game_data.categories[12].description,
+                                          self.game_data.categories[13].description, self.game_data.categories[14].description,
+                                          self.game_data.categories[15].description, self.game_data.categories[16].description,
+                                          self.game_data.categories[17].description, self.game_data.categories[18].description,
+                                          self.game_data.categories[19].description)))
+        if self.category not in range(1, 20):
             raise ValueError("Category should be a value between 1-19")
 
     def init_difficulty(self):
@@ -45,7 +45,7 @@ class Configuration:
             raise ValueError("Difficulty should be a value between 1-3")
 
     def init_answer(self):
-        trivia_item = self.tdb.get_trivia_item(self.game_data.categories[self.category], self.game_data.difficulties[self.difficulty])
+        trivia_item = self.tdb.get_trivia_item(self.game_data.categories[self.category].opentdb_number, self.game_data.difficulties[self.difficulty])
         self.answer = trivia_item.answer
         print(trivia_item.question)
 

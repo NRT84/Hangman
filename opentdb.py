@@ -38,16 +38,20 @@ class Opentdb:
             my_file.truncate()
 
     def get_trivia_item(self, category, difficulty):
-        query = trivia_item.TriviaItem()
-        req = requests.get('https://opentdb.com/api.php?amount=1&category={0}&difficulty={1}&encode=base64&type=multiple&token={2}'.format(category, difficulty, self.token))
+        item = trivia_item.TriviaItem()
+        try:
+            req = requests.get('https://opentdb.com/api.php?amount=1&category={0}&difficulty={1}&encode=base64&type=multiple&token={2}'.format(category, difficulty, self.token))
+        except requests.exceptions.RequestException as exception:
+            print("Error while trying to access open-trivia DB.\nError: {0}".format(exception.strerror))
+            exit(0)
         content = req.text
         json_data = dict(json.loads(content))
         results = json_data.get('results')
         for key, value in dict(results[0]).items():
             if key == 'question':
                 question = str(base64.b64decode(value))
-                query.question = question[2:-1]
+                item.question = question[2:-1]
             if key == 'correct_answer':
                 answer = str(base64.b64decode(value))
-                query.answer = answer[2:-1].lower()
-        return query
+                item.answer = answer[2:-1].lower()
+        return item

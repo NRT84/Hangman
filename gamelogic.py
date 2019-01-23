@@ -52,7 +52,7 @@ class GameLogic:
         else:
             self.config.retries -= 1
             print("'{0}' isn't found in the answer\n".format(guess))
-            self.graphics.print_next()
+            self.graphics.print_hangman()
         if self.config.retries == 0:
             print("The correct answer was: {}".format(Fore.LIGHTGREEN_EX + self.config.answer))
             print(Fore.RESET)
@@ -62,7 +62,7 @@ class GameLogic:
 
     def validate_answer(self, guess):
         if guess == self.config.answer or self.config.candidate == self.config.answer:
-            print("\n\nCONGRATULATIONS! You've guessed it!\n\n")
+            print("\nCONGRATULATIONS! You've guessed it!\n")
             self.config.is_guessed = True
 
     def pretty_print(self, text):
