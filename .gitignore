@@ -9,13 +9,10 @@ venv/*
 # Logs
 *.log
 
-# Specific Files
-token
-
 # Test results
 results/*
 
 # pyinstaller
 build/*
 dist/*
-main.spec
+*.spec

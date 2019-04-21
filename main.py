@@ -1,3 +1,4 @@
+from sys import exit
 import configuration
 import gamedata
 import gamelogic
@@ -19,7 +20,7 @@ def main():
             config = configuration.Configuration(gamedata.GameData())
             config.setup()
             logic = gamelogic.GameLogic(config)
-            logic.pretty_print(config.candidate)
+            logic.print_info()
             while not config.is_guessed and config.retries > 0:
                 logic.guess(input("Enter your guess: "))
                 print("\n")

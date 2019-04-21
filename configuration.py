@@ -8,6 +8,7 @@ class Configuration:
         self.tdb = opentdb.Opentdb()
         self.category = None
         self.difficulty = None
+        self.question = None
         self.answer = None
         self.retries = None
         self.used_words = None
@@ -46,8 +47,8 @@ class Configuration:
 
     def init_answer(self):
         trivia_item = self.tdb.get_trivia_item(self.game_data.categories[self.category].opentdb_number, self.game_data.difficulties[self.difficulty])
+        self.question = trivia_item.question
         self.answer = trivia_item.answer
-        print(trivia_item.question)
 
     def init_candidate(self):
         for letter in self.answer:

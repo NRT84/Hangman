@@ -1,10 +1,12 @@
-from colorama import Fore
+from colorama import init
+from termcolor import colored
 import graphics as graph
 
 
 class GameLogic:
 
     def __init__(self, config):
+        init()
         self.graphics = graph.Graphics()
         self.config = config
         self.should_not_reduce_retry = None
@@ -54,8 +56,7 @@ class GameLogic:
             print("'{0}' isn't found in the answer\n".format(guess))
             self.graphics.print_hangman()
         if self.config.retries == 0:
-            print("The correct answer was: {}".format(Fore.LIGHTGREEN_EX + self.config.answer))
-            print(Fore.RESET)
+            print("The correct answer was: {}".format(colored(self.config.answer, 'green')))
             print("Try another one? ;)\n")
             return
         self.print_info()
@@ -65,15 +66,13 @@ class GameLogic:
             print("\nCONGRATULATIONS! You've guessed it!\n")
             self.config.is_guessed = True
 
-    def pretty_print(self, text):
+    def print_info(self):
+        print(self.config.question)
+        print("Retries left: {0}".format(self.config.retries))
         str_builder = ""
-        for letter in text:
+        for letter in self.config.candidate:
             if letter.isspace():
                 str_builder += "   "
             else:
                 str_builder += "{0} ".format(letter)
         print(str_builder)
-
-    def print_info(self):
-        print("Retries left: {0}".format(self.config.retries))
-        self.pretty_print(self.config.candidate)
