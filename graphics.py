@@ -1,7 +1,10 @@
+from colorama import init
+from termcolor import colored
 
 class Graphics:
 
     def __init__(self):
+        init()
         self.function_list = None
         self.index = 0
         self._init_function_list()
@@ -56,4 +59,4 @@ class Graphics:
         print("|-------\n|      |\n|      O\n|     /|\\\n|      |\n|     / \\\n|")
 
     def _print_try_11(self):
-        print("|-------\n|\n|      X\n|     /|\\    YOU DIED!\n|      |\n|     / \\\n|")
+        print("|-------\n|\n|      X\n|     /|\\    {}\n|      |\n|     / \\\n|".format(colored("YOU DIED!", 'red')))

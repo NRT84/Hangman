@@ -63,11 +63,11 @@ class GameLogic:
 
     def validate_answer(self, guess):
         if guess == self.config.answer or self.config.candidate == self.config.answer:
-            print("\nCONGRATULATIONS! You've guessed it!\n")
+            print(format(colored("\nCONGRATULATIONS! You've guessed it!\n", 'green')))
             self.config.is_guessed = True
 
     def print_info(self):
-        print(self.config.question)
+        #print(self.config.question)
         print("Retries left: {0}".format(self.config.retries))
         str_builder = ""
         for letter in self.config.candidate:
