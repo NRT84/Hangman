@@ -26,7 +26,7 @@ def main():
             config = configuration.Configuration(gamedata.GameData())
             config.setup()
             logic = gamelogic.GameLogic(config)
-            events.Events(config)
+            event = events.Events(config)
             print_instructions(config.question)
             logic.print_info()
             while not config.is_guessed and config.retries > 0:
@@ -34,14 +34,16 @@ def main():
                 print("\n")
             option = 0
             is_first_game = False
+            event.stop_listener()
         if option == 2:
             exit(0)
 
 
 def print_instructions(question):
-    print("For simplicity reasons all your guesses should be lowercase as the answers will be as well.\n")
-    #print("Remember, at any point in time you can press 'f1' to see the current question.\n")
-    print(question)
+    print("For simplicity reasons all your guesses should be lowercase as the answers will be as well.")
+    print("Remember, at any point in time you can press 'f1' to see the current question.\n")
+    print("{}\n".format(question))
+
 
 def maximize():
     kernel32 = ctypes.WinDLL('kernel32')

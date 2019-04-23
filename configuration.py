@@ -42,8 +42,8 @@ class Configuration:
                             self.game_data.categories[19].description))
         option = 0
         while option not in range(1, 20):
-            option = int(input("Your choice: "))
             try:
+                option = int(input("Your choice: "))
                 if option not in range(1, 20):
                     raise ValueError()
             except ValueError:
@@ -54,8 +54,8 @@ class Configuration:
         print("Select difficulty level (input number):\n1. Easy\n2. Medium\n3. Hard\n\n")
         option = 0
         while option not in range(1, 4):
-            option = int(input("Your choice: "))
             try:
+                option = int(input("Your choice: "))
                 if option not in range(1, 4):
                     raise ValueError
             except ValueError:
