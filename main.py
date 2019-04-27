@@ -1,8 +1,5 @@
 from sys import exit
-import configuration
-import gamedata
-import gamelogic
-import events
+from Core import configuration, gamedata, gamelogic, events
 import ctypes
 import os
 
@@ -24,7 +21,6 @@ def main():
             if not is_first_game:
                 clear_screen()
             config = configuration.Configuration(gamedata.GameData())
-            config.setup()
             logic = gamelogic.GameLogic(config)
             event = events.Events(config)
             print_instructions(config.question)
@@ -41,7 +37,7 @@ def main():
 
 def print_instructions(question):
     print("For simplicity reasons all your guesses should be lowercase as the answers will be as well.")
-    print("Remember, at any point in time you can press 'f1' to see the current question.\n")
+    print("Remember, at any point in time you can hit 'f1' to see the current question.\n")
     print("{}\n".format(question))
 
 

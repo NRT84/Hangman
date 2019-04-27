@@ -1,6 +1,6 @@
 from colorama import init
 from termcolor import colored
-import graphics as graph
+from Core import graphics as graph
 
 
 class GameLogic:
@@ -23,7 +23,6 @@ class GameLogic:
             self.handle_positive_guess(guess)
 
         self.handle_end_turn(guess)
-        self.validate_answer(guess)
 
     def evaluate_new_candidate(self, old_candidate, new_found_letter, answer):
         new_candidate = ""
@@ -41,14 +40,19 @@ class GameLogic:
                 self.config.candidate = self.evaluate_new_candidate(self.config.candidate, letter, self.config.answer)
 
     def handle_end_turn(self, guess):
-        self.mark_used_word(guess)
+        self.validate_answer(guess)
         self.reduce_retries(guess)
+        self.mark_used_word(guess)
 
     def mark_used_word(self, guess):
         self.config.used_words.append(guess)
 
     def reduce_retries(self, guess):
-        if self.should_not_reduce_retry or self.config.is_guessed:
+        if self.config.is_guessed:
+            print(format(colored("\n{}".format(self.config.answer), 'green')))
+            print(format(colored("\nCONGRATULATIONS! You've guessed it!\n", 'green')))
+            return
+        if self.should_not_reduce_retry:
             self.print_info()
             return
         else:
@@ -63,11 +67,9 @@ class GameLogic:
 
     def validate_answer(self, guess):
         if guess == self.config.answer or self.config.candidate == self.config.answer:
-            print(format(colored("\nCONGRATULATIONS! You've guessed it!\n", 'green')))
             self.config.is_guessed = True
 
     def print_info(self):
-        #print(self.config.question)
         print("Retries left: {0}".format(self.config.retries))
         str_builder = ""
         for letter in self.config.candidate:

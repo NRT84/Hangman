@@ -1,10 +1,13 @@
 from colorama import init
 from termcolor import colored
 
+
 class Graphics:
 
     def __init__(self):
         init()
+        self.hangman_color = "blue"
+        self.hangman_death_color = "red"
         self.function_list = None
         self.index = 0
         self._init_function_list()
@@ -29,34 +32,35 @@ class Graphics:
         print("\n")
 
     def _print_try_1(self):
-        print("|\n|\n|\n|\n|\n|\n|")
+        print(format(colored("|\n|\n|\n|\n|\n|\n|", self.hangman_color)))
 
     def _print_try_2(self):
-        print("|-------\n|\n|\n|\n|\n|\n|")
+        print(format(colored("|-------\n|\n|\n|\n|\n|\n|", self.hangman_color)))
 
     def _print_try_3(self):
-        print("|-------\n|      |\n|\n|\n|\n|\n|")
+        print(format(colored("|-------\n|      |\n|\n|\n|\n|\n|", self.hangman_color)))
 
     def _print_try_4(self):
-        print("|-------\n|      |\n|      O\n|\n|\n|\n|")
+        print(format(colored("|-------\n|      |\n|      O\n|\n|\n|\n|", self.hangman_color)))
 
     def _print_try_5(self):
-        print("|-------\n|      |\n|      O\n|     /\n|\n|\n|")
+        print(format(colored("|-------\n|      |\n|      O\n|     /\n|\n|\n|", self.hangman_color)))
 
     def _print_try_6(self):
-        print("|-------\n|      |\n|      O\n|     / \\\n|\n|\n|")
+        print(format(colored("|-------\n|      |\n|      O\n|     / \\\n|\n|\n|", self.hangman_color)))
 
     def _print_try_7(self):
-        print("|-------\n|      |\n|      O\n|     /|\\\n|\n|\n|")
+        print(format(colored("|-------\n|      |\n|      O\n|     /|\\\n|\n|\n|", self.hangman_color)))
 
     def _print_try_8(self):
-        print("|-------\n|      |\n|      O\n|     /|\\\n|      |\n|\n|")
+        print(format(colored("|-------\n|      |\n|      O\n|     /|\\\n|      |\n|\n|", self.hangman_color)))
 
     def _print_try_9(self):
-        print("|-------\n|      |\n|      O\n|     /|\\\n|      |\n|     /\n|")
+        print(format(colored("|-------\n|      |\n|      O\n|     /|\\\n|      |\n|     /\n|", self.hangman_color)))
 
     def _print_try_10(self):
-        print("|-------\n|      |\n|      O\n|     /|\\\n|      |\n|     / \\\n|")
+        print(format(colored("|-------\n|      |\n|      O\n|     /|\\\n|      |\n|     / \\\n|", self.hangman_color)))
 
     def _print_try_11(self):
-        print("|-------\n|\n|      X\n|     /|\\    {}\n|      |\n|     / \\\n|".format(colored("YOU DIED!", 'red')))
+        print(format(colored("|-------\n|\n|      X\n|     /|\\    \n|      |\n|     / \\\n|\n", self.hangman_color)))
+        print(format(colored("YOU DIED!", self.hangman_death_color)))

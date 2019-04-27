@@ -1,4 +1,4 @@
-import trivia_item
+from Entities import trivia_item
 import requests
 import json
 import base64
@@ -55,5 +55,5 @@ class Opentdb:
                 item.question = question[2:-1]
             if key == 'correct_answer':
                 answer = str(base64.b64decode(value))
-                item.answer = answer[2:-1].lower()
+                item.answer = answer[2:-1].replace(".", "").replace(",", "").replace("?", "").replace("!", "").lower()
         return item

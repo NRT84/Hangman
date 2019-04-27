@@ -1,4 +1,4 @@
-import opentdb
+from Core import opentdb
 from colorama import init
 from termcolor import colored
 
@@ -17,6 +17,7 @@ class Configuration:
         self.used_words = None
         self.is_guessed = None
         self.candidate = ""
+        self.setup()
 
     def setup(self):
         self.init_category()
