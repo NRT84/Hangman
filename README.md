@@ -8,3 +8,8 @@ You can choose a question from a variety of categories and three difficulty leve
 The screen keeps scrolling up so you can hit 'f1' at any point in time to see the question again.  
 
 Enjoy!
+
+## install
+```bash
+pip install -r requirements.txt
+```
