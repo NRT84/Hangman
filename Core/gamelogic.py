@@ -49,18 +49,18 @@ class GameLogic:
 
     def reduce_retries(self, guess):
         if self.config.is_guessed:
-            print(format(colored("\n{}".format(self.config.answer), 'green')))
-            print(format(colored("\nCONGRATULATIONS! You've guessed it!\n", 'green')))
+            print(colored(f"\n{self.config.answer}", 'magenta'))
+            print(colored("\nCONGRATULATIONS! You've guessed it!\n", 'green'))
             return
         if self.should_not_reduce_retry:
             self.print_info()
             return
         else:
             self.config.retries -= 1
-            print("'{0}' isn't found in the answer\n".format(guess))
+            print(f"'{guess}' isn't found in the answer\n")
             self.graphics.print_hangman()
         if self.config.retries == 0:
-            print("The correct answer was: {}".format(colored(self.config.answer, 'green')))
+            print(f"The correct answer was: {colored(self.config.answer, 'magenta')}")
             print("Try another one? ;)\n")
             return
         self.print_info()
@@ -70,11 +70,11 @@ class GameLogic:
             self.config.is_guessed = True
 
     def print_info(self):
-        print("Retries left: {0}".format(self.config.retries))
+        print(f"Retries left: {self.config.retries}")
         str_builder = ""
         for letter in self.config.candidate:
             if letter.isspace():
                 str_builder += "   "
             else:
-                str_builder += "{0} ".format(letter)
+                str_builder += f"{letter} "
         print(str_builder)

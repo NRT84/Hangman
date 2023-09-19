@@ -38,7 +38,7 @@ def main():
 def print_instructions(question):
     print("For simplicity reasons all your guesses should be lowercase as the answers will be as well.")
     print("Remember, at any point in time you can hit 'f1' to see the current question.\n")
-    print("{}\n".format(question))
+    print(f"{question}\n")
 
 
 def maximize():

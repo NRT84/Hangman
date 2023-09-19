@@ -16,4 +16,4 @@ class Events:
 
     def on_press(self, key):
         if key == keyboard.Key.f1:
-            print("\n{}\nEnter your guess: ".format(self.config.question))
+            print(f"\n{self.config.question}\nEnter your guess: ")

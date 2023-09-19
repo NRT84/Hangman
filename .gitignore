@@ -17,3 +17,6 @@ results/*
 build/*
 dist/*
 *.spec
+
+# Misc
+/token

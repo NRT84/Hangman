@@ -9,7 +9,7 @@ import os
 class Opentdb:
 
     def __init__(self):
-        self._token_file = "{0}\\token".format(os.getcwd())
+        self._token_file = f"{os.getcwd()}\\token"
         self.token = self.get_token(self._token_file)
         if not self.is_token_valid(self.token):
             self.token = self.generate_new_token()
@@ -22,7 +22,7 @@ class Opentdb:
     def is_token_valid(self, token):
         if not token:
             return False
-        response = requests.get("https://opentdb.com/api.php?amount=1&token={0}".format(token))
+        response = requests.get(f"https://opentdb.com/api.php?amount=1&token={token}")
         if "\"response_code\":0" not in response.text:
             return False
         return True
@@ -42,9 +42,9 @@ class Opentdb:
     def get_trivia_item(self, category, difficulty):
         item = trivia_item.TriviaItem()
         try:
-            req = requests.get('https://opentdb.com/api.php?amount=1&category={0}&difficulty={1}&encode=base64&type=multiple&token={2}'.format(category, difficulty, self.token))
+            req = requests.get(f'https://opentdb.com/api.php?amount=1&category={category}&difficulty={difficulty}&encode=base64&type=multiple&token={self.token}')
         except requests.exceptions.RequestException as exception:
-            print("Error while trying to access open-trivia DB.\nError: {0}".format(exception.strerror))
+            print(f"Error while trying to access open-trivia DB.\nError: {exception.strerror}")
             exit(0)
         content = req.text
         json_data = dict(json.loads(content))
