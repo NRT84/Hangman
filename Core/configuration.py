@@ -78,8 +78,7 @@ class Configuration:
                 self.candidate += letter
 
     def init_retries(self, retries_config, difficulty):
-        #self.retries = retries_config[difficulty]
-        self.retries = 11
+        self.retries = retries_config[difficulty]
 
     def init_used_words(self):
         self.used_words = []

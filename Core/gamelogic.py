@@ -1,14 +1,21 @@
 from colorama import init
 from termcolor import colored
-from Core import graphics as graph
+from Core.graphics import graphics_easy as graph_easy
+from Core.graphics import graphics_medium as graph_medium
+from Core.graphics import graphics_hard as graph_hard
 
 
 class GameLogic:
 
     def __init__(self, config):
         init()
-        self.graphics = graph.Graphics()
         self.config = config
+        if self.config.difficulty == 1:
+            self.graphics = graph_easy.GraphicsEasy()
+        elif self.config.difficulty == 2:
+            self.graphics = graph_medium.GraphicsMedium()
+        else:
+            self.graphics = graph_hard.GraphicsHard()
         self.should_not_reduce_retry = None
 
     def guess(self, guess):
