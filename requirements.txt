@@ -1,4 +1,9 @@
-colorama
-termcolor
-requests
-pynput
+certifi==2023.7.22
+charset-normalizer==3.2.0
+colorama==0.4.6
+idna==3.4
+pynput==1.7.6
+requests==2.31.0
+six==1.16.0
+termcolor==2.3.0
+urllib3==2.0.4
