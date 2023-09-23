@@ -1,8 +1,8 @@
 from colorama import init
 from termcolor import colored
-from Core.graphics import graphics_easy as graph_easy
-from Core.graphics import graphics_medium as graph_medium
-from Core.graphics import graphics_hard as graph_hard
+from core.graphics import graphics_easy as graph_easy
+from core.graphics import graphics_medium as graph_medium
+from core.graphics import graphics_hard as graph_hard
 
 
 class GameLogic:

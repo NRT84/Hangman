@@ -1,5 +1,5 @@
 from sys import exit
-from Core import configuration, gamedata, gamelogic, events
+from core import configuration, gamedata, gamelogic, events, opentdb
 import ctypes
 import os
 
@@ -20,7 +20,7 @@ def main():
         if option == 1:
             if not is_first_game:
                 clear_screen()
-            config = configuration.Configuration(gamedata.GameData())
+            config = configuration.Configuration(gamedata.GameData(), opentdb.Opentdb())
             logic = gamelogic.GameLogic(config)
             event = events.Events(config)
             print_instructions(config.question)

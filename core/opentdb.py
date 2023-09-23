@@ -1,4 +1,4 @@
-from Entities import trivia_item
+from entities import trivia_item
 import requests
 import json
 import base64

@@ -1,4 +1,4 @@
-from Entities import category as cat
+from entities import category as cat
 
 
 class GameData:

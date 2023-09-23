@@ -1,14 +1,13 @@
-from Core import opentdb
 from colorama import init
 from termcolor import colored
 
 
 class Configuration:
 
-    def __init__(self, game_data):
+    def __init__(self, game_data, open_tdb):
         init()
         self.game_data = game_data
-        self.tdb = opentdb.Opentdb()
+        self.tdb = open_tdb
         self.category = None
         self.difficulty = None
         self.question = None
